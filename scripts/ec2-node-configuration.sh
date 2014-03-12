@@ -77,7 +77,7 @@ fi
 echo Donwload and install mysql connector >> init_script.log
 wget -O mysql-connector-java-5.1.28.tar.gz http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.28.tar.gz
 tar xzf mysql-connector-java-5.1.28.tar.gz
-cp mysql-connector-java-5.1.28/mysql-con	nector-java-5.1.28-bin.jar /usr/share/java/mysql-connector-java.jar
+cp mysql-connector-java-5.1.28/mysql-connector-java-5.1.28-bin.jar /usr/share/java/mysql-connector-java.jar
 rm -rf mysql-connector-java-5.1.28*
 #############################################
 
@@ -152,12 +152,12 @@ wget http://archive.cloudera.com/cm4/redhat/6/x86_64/cm/cloudera-manager.repo
 mv cloudera-manager.repo /etc/yum.repos.d/
 rpm --import http://archive.cloudera.com/cdh4/redhat/6/x86_64/cdh/RPM-GPG-KEY-cloudera
 yum clean all
-yum install jdk cloudera-manager-agent -y
+yum install jdk cloudera-manager-agent cloudera-manager-daemons -y
 #############################################
 
 #############################################
 if $CMSERVER; then
-yum install cloudera-manager-server-db cloudera-manager-daemons cloudera-manager-server -y
+yum install cloudera-manager-server-db cloudera-manager-server -y
 cat > /tmp/license << EOF
 cm-license
 EOF
